@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,23 +7,58 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
   background: #f5f5f5;
   min-height: 100vh;
 }
 
+/* ── Header ──────────────────────────────────────────────────────────────── */
 .app-header {
   background: #fff;
   padding: 12px 24px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .app-title {
   font-size: 22px;
+  font-weight: 700;
   color: #f29d38;
   letter-spacing: 1px;
 }
 
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-username {
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid #f29d38;
+  color: #f29d38;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.logout-btn:hover {
+  background: #f29d38;
+  color: #fff;
+}
+
+/* ── Search ──────────────────────────────────────────────────────────────── */
 .search-input {
   display: block;
   width: 480px;
@@ -30,15 +67,18 @@ body {
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 14px;
+  font-family: 'Inter', sans-serif;
   outline: none;
   background: #fff;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: border-color 0.15s;
 }
 
 .search-input:focus {
   border-color: #f29d38;
 }
 
+/* ── Note Form ───────────────────────────────────────────────────────────── */
 .add-note-form {
   display: flex;
   flex-direction: column;
@@ -56,14 +96,14 @@ body {
   border: none;
   outline: none;
   font-size: 14px;
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
   resize: none;
   width: 100%;
 }
 
 .add-note-form input {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   color: #333;
 }
 
@@ -77,16 +117,19 @@ body {
   background: #f29d38;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 8px 20px;
   font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
+  transition: background 0.15s;
 }
 
 .add-note-form button:hover {
   background: #e08c28;
 }
 
+/* ── Notes Grid ──────────────────────────────────────────────────────────── */
 .notes-grid {
   display: flex;
   flex-wrap: wrap;
@@ -94,19 +137,34 @@ body {
   padding: 16px 24px;
 }
 
+.empty-state {
+  color: #aaa;
+  font-size: 14px;
+  margin: 40px auto;
+  text-align: center;
+  width: 100%;
+}
+
+/* ── Note Card ───────────────────────────────────────────────────────────── */
 .note-card {
   background: #fff;
   border-radius: 8px;
   padding: 16px;
   width: 240px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
   display: flex;
   flex-direction: column;
   gap: 8px;
+  transition: box-shadow 0.2s;
+}
+
+.note-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .note-card h2 {
   font-size: 15px;
+  font-weight: 600;
   color: #333;
 }
 
@@ -114,6 +172,7 @@ body {
   font-size: 13px;
   color: #666;
   flex: 1;
+  white-space: pre-wrap;
 }
 
 .note-card-actions {
@@ -131,6 +190,8 @@ body {
   padding: 3px 8px;
   border-radius: 4px;
   color: #555;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.15s;
 }
 
 .note-card button:hover {
@@ -144,7 +205,140 @@ body {
   border-radius: 4px;
   padding: 6px;
   font-size: 13px;
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
   outline: none;
   resize: none;
+}
+
+/* ── Auth Pages ──────────────────────────────────────────────────────────── */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fff8f0 0%, #fdecd4 100%);
+  padding: 24px;
+}
+
+.auth-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 8px 32px rgba(242, 157, 56, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.auth-logo {
+  font-size: 42px;
+  margin-bottom: 4px;
+}
+
+.auth-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #f29d38;
+  letter-spacing: 0.5px;
+}
+
+.auth-subtitle {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.auth-error {
+  width: 100%;
+  background: #fff0f0;
+  border: 1px solid #f5c6c6;
+  color: #c0392b;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.auth-field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #444;
+}
+
+.auth-field input {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  color: #333;
+}
+
+.auth-field input:focus {
+  border-color: #f29d38;
+  box-shadow: 0 0 0 3px rgba(242, 157, 56, 0.12);
+}
+
+.auth-btn {
+  width: 100%;
+  background: #f29d38;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 4px;
+}
+
+.auth-btn:hover:not(:disabled) {
+  background: #e08c28;
+  transform: translateY(-1px);
+}
+
+.auth-btn:active {
+  transform: translateY(0);
+}
+
+.auth-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.auth-switch {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #888;
+}
+
+.auth-switch a {
+  color: #f29d38;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
 }

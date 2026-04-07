@@ -1,57 +1,57 @@
-import { useState, useEffect } from "react";
-
-const API = 'http://localhost:3001';
+import { useState, useEffect } from 'react';
+import api from '../services/api';
 
 function useNotes() {
-
   const [notes, setNotes] = useState([]);
 
-  // Fetch all notes from the database
   const fetchNotes = async () => {
-    const res = await fetch(`${API}/notes`);
-    const data = await res.json();
-    setNotes(data);
+    try {
+      const res = await api.get('/notes/');
+      setNotes(res.data);
+    } catch (err) {
+      console.error('Failed to fetch notes:', err);
+    }
   };
 
-  // Run once on mount — load notes from DB
   useEffect(() => {
     fetchNotes();
   }, []);
 
   const addNote = async (title, content) => {
-    await fetch(`${API}/notes`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, content })
-    });
-    fetchNotes();
+    try {
+      await api.post('/notes/', { title, content });
+      fetchNotes();
+    } catch (err) {
+      console.error('Failed to add note:', err);
+    }
   };
 
   const deleteNote = async (id) => {
-    await fetch(`${API}/notes/${id}`, {
-      method: 'DELETE'
-    });
-    fetchNotes();
+    try {
+      await api.delete(`/notes/${id}/`);
+      fetchNotes();
+    } catch (err) {
+      console.error('Failed to delete note:', err);
+    }
   };
 
   const editNote = async (id, title, content) => {
-    const note = notes.find(n => n.id === id);
-    await fetch(`${API}/notes/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, content, pinned: note.pinned })
-    });
-    fetchNotes();
+    try {
+      const note = notes.find((n) => n.id === id);
+      await api.put(`/notes/${id}/`, { title, content, pinned: note.pinned });
+      fetchNotes();
+    } catch (err) {
+      console.error('Failed to edit note:', err);
+    }
   };
 
   const pinNote = async (id) => {
-    const note = notes.find(n => n.id === id);
-    await fetch(`${API}/notes/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title: note.title, content: note.content, pinned: !note.pinned })
-    });
-    fetchNotes();
+    try {
+      await api.post(`/notes/${id}/pin/`);
+      fetchNotes();
+    } catch (err) {
+      console.error('Failed to pin note:', err);
+    }
   };
 
   return { notes, addNote, deleteNote, editNote, pinNote };
