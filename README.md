@@ -1,8 +1,8 @@
 # KeepNotes — Frontend (React + Vite)
 
-The frontend for [KeepNotes](https://github.com/YOUR_USERNAME/KeepNotes-BE), a Google Keep-style notes app. Built with React 19 and Vite, featuring JWT authentication and a clean, responsive UI.
+The frontend for [KeepNotes](https://github.com/AdityaMohite47/KeepNotes-BE), a Google Keep-style notes app. Built with React 19 and Vite, featuring JWT authentication and a clean, responsive UI.
 
-> 🔗 **Backend Repository:** [KeepNotes-BE](https://github.com/YOUR_USERNAME/KeepNotes-BE)
+> 🔗 **Backend Repository:** [KeepNotes-BE](https://github.com/AdityaMohite47/KeepNotes-BE)
 
 ## Features
 
@@ -55,7 +55,7 @@ KeepNotes-FE/
 ### Prerequisites
 
 - Node.js 18+
-- [KeepNotes-BE](https://github.com/YOUR_USERNAME/KeepNotes-BE) running on `http://localhost:8000`
+- [KeepNotes-BE](https://github.com/AdityaMohite47/KeepNotes-BE) running on `http://localhost:8000`
 
 ### 1. Clone the repository
 
@@ -109,7 +109,7 @@ App runs on `http://localhost:5173`
 
 ## Connecting to the Backend
 
-This frontend expects the [KeepNotes-BE](https://github.com/YOUR_USERNAME/KeepNotes-BE) Django API to be running. The API base URL is configured in `src/services/api.js`:
+This frontend expects the [KeepNotes-BE](https://github.com/AdityaMohite47/KeepNotes-BE) Django API to be running. The API base URL is configured in `src/services/api.js`:
 
 ```js
 const api = axios.create({
@@ -127,7 +127,3 @@ Make sure the backend's `CORS_ALLOWED_ORIGINS` includes `http://localhost:5173`.
 | `npm run build` | Build for production |
 | `npm run preview` | Preview production build locally |
 | `npm run lint` | Run ESLint |
-
-## License
-
-MIT
